@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const whitelist = ['solashinft.ducnghiapham.online', 'http://127.0.0.1:3000'];
+  const whitelist = ['.ducnghiapham.online'];
   app.enableCors({
     origin: function (origin, callback) {
       if (!origin || whitelist.indexOf(origin) !== -1) {
