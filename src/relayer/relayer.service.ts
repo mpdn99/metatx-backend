@@ -29,7 +29,7 @@ export class RelayerService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.post(
-          `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}$remoteip=${ip}`,
+          `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}&remoteip=${ip}`,
         ),
       );
       console.log(data);
