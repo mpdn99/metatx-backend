@@ -32,6 +32,7 @@ export class RelayerService {
           `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}$remoteip=${ip}`,
         ),
       );
+      console.log(data);
       return data.success;
     } catch (error) {
       throw error;
