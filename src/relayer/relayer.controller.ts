@@ -4,7 +4,7 @@ import {
   Headers,
   HttpException,
   Post,
-  Ip,
+  Request,
 } from '@nestjs/common';
 import { RelayerService } from './relayer.service';
 
@@ -15,8 +15,10 @@ export class RelayerController {
   async relay(
     @Headers('signature') idToken: string,
     @Body() payload: any,
-    @Ip() ip,
+    @Request() request: any,
   ): Promise<any> {
+    const ip = request.connection.remoteAddress;
+
     const isValidID = await this.relayerService.verifySignature(
       idToken,
       payload.request,
