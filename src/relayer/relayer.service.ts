@@ -39,13 +39,10 @@ export class RelayerService {
     }
   }
   async relay(payload: any) {
-    const provider = new JsonRpcProvider(
-      'https://rpc-mumbai.maticvigil.com/',
-      80001,
-    );
+    const provider = new JsonRpcProvider('https://polygon-rpc.com/', 137);
     const signer = new Wallet(process.env.PRIVATE_KEY, provider);
     const forwarder = new Contract(
-      '0xAd5CF9924Fe942812F339438Ca310F4632dC1285',
+      '0xBcD0B8C849D3C860B332ABffF2a91c5Cc3e71b78',
       ForwarderAbi,
       signer,
     );
