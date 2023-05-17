@@ -51,8 +51,9 @@ export class RelayerService {
       throw new Error('Invalid signature for request');
     }
     const gasLimit = (parseInt(payload.request.gas) || 0) + 50000;
-    const gasPrice = (await forwarder.runner.provider.getFeeData())
-      .maxFeePerGas;
+    // const gasPrice = (await forwarder.runner.provider.getFeeData())
+    //   .maxFeePerGas;
+    const gasPrice = 230;
     const excute = await forwarder.execute(payload.request, payload.signature, {
       gasLimit,
       gasPrice,
