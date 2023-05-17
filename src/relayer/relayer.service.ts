@@ -6,6 +6,7 @@ import {
   JsonRpcProvider,
   Contract,
   Wallet,
+  parseUnits,
 } from 'ethers';
 import { firstValueFrom } from 'rxjs';
 import { ForwarderAbi } from '../abi/forwarder';
@@ -53,7 +54,7 @@ export class RelayerService {
     const gasLimit = (parseInt(payload.request.gas) || 0) + 50000;
     // const gasPrice = (await forwarder.runner.provider.getFeeData())
     //   .maxFeePerGas;
-    const gasPrice = 230;
+    const gasPrice = parseUnits('230', 'gwei');
     const excute = await forwarder.execute(payload.request, payload.signature, {
       gasLimit,
       gasPrice,
