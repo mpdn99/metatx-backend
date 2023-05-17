@@ -6,7 +6,6 @@ import {
   JsonRpcProvider,
   Contract,
   Wallet,
-  parseUnits,
 } from 'ethers';
 import { firstValueFrom } from 'rxjs';
 import { ForwarderAbi } from '../abi/forwarder';
@@ -52,9 +51,8 @@ export class RelayerService {
       throw new Error('Invalid signature for request');
     }
     const gasLimit = (parseInt(payload.request.gas) || 0) + 50000;
-    // const gasPrice = (await forwarder.runner.provider.getFeeData())
-    //   .maxFeePerGas;
-    const gasPrice = parseUnits('230', 'gwei');
+    const gasPrice = (await forwarder.runner.provider.getFeeData())
+      .maxFeePerGas;
     const excute = await forwarder.execute(payload.request, payload.signature, {
       gasLimit,
       gasPrice,
