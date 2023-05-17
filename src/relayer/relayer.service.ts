@@ -15,7 +15,7 @@ export class RelayerService {
   constructor(private readonly httpService: HttpService) {}
 
   async verifySignature(token: any, payload: any) {
-    const message = 'vaix';
+    const message = `Welcome to VAIX Demo!\n\nClick sign to verify your identity.\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nURI:\nsolashinft.ducnghiapham.online\n\nWallet address:\n${payload.request.from}\n\nChain ID:\n137`;
     const recoveredPublicKeyToken = recoverAddress(hashMessage(message), token);
     const payloadSender = payload.request.from;
     if (recoveredPublicKeyToken === payloadSender) {
