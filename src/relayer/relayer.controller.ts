@@ -20,6 +20,10 @@ export class RelayerController {
     const ip =
       request.headers['x-forwarded-for'] || request.connection.remoteAddress;
 
+    console.log(request.headers['x-forwarded-for']);
+    console.log(request.connection.remoteAddress);
+    console.log(request.ip);
+
     const isValidID = await this.relayerService.verifySignature(
       idToken,
       payload.request,
